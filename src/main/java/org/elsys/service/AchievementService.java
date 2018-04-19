@@ -18,9 +18,9 @@ public class AchievementService {
         userAchievementDao = new UserAchievementDaoImpl();
     }
 
-    public void addAchievement(String name, String description) {
+    public void addAchievement(Achievement achievement) {
         achievementDao.openCurrentSessionWithTransaction();
-        achievementDao.insert(new Achievement(name, description));
+        achievementDao.insert(achievement);
         achievementDao.closeCurrentSessionWithTransaction();
     }
 

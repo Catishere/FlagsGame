@@ -12,6 +12,9 @@ public class Session {
     @Column(name = "player_count")
     private int playerCount;
 
+    public Session() {
+    }
+
     public Session(int playerCount) {
         this.playerCount = playerCount;
     }

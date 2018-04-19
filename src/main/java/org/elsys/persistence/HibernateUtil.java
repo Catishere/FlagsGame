@@ -20,10 +20,11 @@ public class HibernateUtil {
         configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/flags");
         configuration.setProperty("hibernate.connection.username", "root");
         configuration.setProperty("hibernate.connection.password", "root");
+        configuration.setProperty("hibernate.connection.useSSL", "false");
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
         configuration.setProperty("hibernate.show_sql", "true");
-        configuration.setProperty(" hibernate.connection.pool_size", "10");
+        configuration.setProperty("hibernate.connection.pool_size", "10");
 
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         sessionFactory = configuration.buildSessionFactory(builder.build());

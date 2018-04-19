@@ -30,6 +30,9 @@ public class Room {
         this.currentSession = currentSession;
     }
 
+    public Room() {
+    }
+
     public long getId() {
         return id;
     }
