@@ -1,6 +1,7 @@
 package org.elsys.dao.Impl;
 
 import org.elsys.dao.SessionUserDao;
+import org.elsys.entity.RoomUser;
 import org.elsys.entity.SessionUser;
 import org.elsys.persistence.HibernateUtil;
 import org.hibernate.Session;
@@ -48,17 +49,17 @@ public class SessionUserDaoImpl implements SessionUserDao {
 
     @Override
     public void insert(SessionUser sessionUser) {
-
+        getCurrentSession().save(sessionUser);
     }
 
     @Override
     public void update(SessionUser sessionUser) {
-
+        getCurrentSession().save(sessionUser);
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().delete(findById(id));
     }
 
     @Override
@@ -72,7 +73,7 @@ public class SessionUserDaoImpl implements SessionUserDao {
     }
 
     @Override
-    public List<SessionUser> findByUsername(String name) {
-        return null;
+    public SessionUser findById(long id) {
+        return getCurrentSession().get(SessionUser.class,id);
     }
 }

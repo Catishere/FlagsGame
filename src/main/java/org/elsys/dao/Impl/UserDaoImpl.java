@@ -46,17 +46,17 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void insert(UserDao user) {
-
+        getCurrentSession().save(user);
     }
 
     @Override
     public void update(UserDao user) {
-
+        getCurrentSession().save(user);
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().delete(findById(id));
     }
 
     @Override

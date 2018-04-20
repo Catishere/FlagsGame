@@ -45,21 +45,21 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public void insert(Session session) {
-
+        getCurrentSession().save(session);
     }
 
     @Override
     public void update(Session session) {
-
+        getCurrentSession().save(session);
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().delete(findById(id));
     }
 
     @Override
     public Session findById(long id) {
-        return null;
+        return getCurrentSession().get(Session.class,id);
     }
 }

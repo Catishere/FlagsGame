@@ -45,23 +45,23 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public void insert(Room user) {
-
+    public void insert(Room room) {
+        getCurrentSession().save(room);
     }
 
     @Override
-    public void update(Room user) {
-
+    public void update(Room room) {
+        getCurrentSession().save(room);
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().delete(findById(id));
     }
 
     @Override
     public Room findById(long id) {
-        return null;
+        return getCurrentSession().get(Room.class,id);
     }
 
     @Override

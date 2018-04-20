@@ -10,7 +10,7 @@ public interface RoomUserDao {
     void insert(RoomUser roomUser);
     void update(RoomUser roomUser);
     void delete(long id);
-    List<SessionUser> findBySessionId(long id);
-    List<SessionUser> findByUserId(long id);
-    List<SessionUser> findByUsername(String name);
+    RoomUser findById(long id);
+    List<RoomUser> findByRoomId(long id);
+    List<RoomUser> findByUserId(long id);
 }

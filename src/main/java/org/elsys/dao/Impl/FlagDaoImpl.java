@@ -46,17 +46,17 @@ public class FlagDaoImpl implements FlagDao {
 
     @Override
     public void insert(Flag flag) {
-
+        getCurrentSession().save(flag);
     }
 
     @Override
     public void update(Flag flag) {
-
+        getCurrentSession().save(flag);
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().save(findById(id));
     }
 
     @Override

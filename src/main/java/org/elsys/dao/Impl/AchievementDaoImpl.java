@@ -16,10 +16,9 @@ public class AchievementDaoImpl implements AchievementDao {
         return currentSession;
     }
 
-    public Session openCurrentSessionWithTransaction(){
+    public void openCurrentSessionWithTransaction(){
         currentSession = HibernateUtil.getSessionFactory().openSession();
         currentTransaction = currentSession.beginTransaction();
-        return currentSession;
     }
 
     public void closeCurrentSession(){
@@ -46,17 +45,17 @@ public class AchievementDaoImpl implements AchievementDao {
 
     @Override
     public void insert(Achievement achievement) {
-
+        getCurrentSession().save(achievement);
     }
 
     @Override
     public void update(Achievement achievement) {
-
+        getCurrentSession().save(achievement);
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().delete(id);
     }
 
     @Override

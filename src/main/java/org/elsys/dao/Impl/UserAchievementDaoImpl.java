@@ -1,6 +1,7 @@
 package org.elsys.dao.Impl;
 
 import org.elsys.dao.UserAchievementDao;
+import org.elsys.entity.RoomUser;
 import org.elsys.entity.UserAchievement;
 import org.elsys.persistence.HibernateUtil;
 import org.hibernate.Session;
@@ -13,15 +14,13 @@ public class UserAchievementDaoImpl implements UserAchievementDao {
     private Session currentSession;
     private Transaction currentTransaction;
 
-    public Session openCurrentSession(){
+    public void openCurrentSession(){
         currentSession = HibernateUtil.getSessionFactory().openSession();
-        return currentSession;
     }
 
-    public Session openCurrentSessionWithTransaction(){
+    public void openCurrentSessionWithTransaction(){
         currentSession = HibernateUtil.getSessionFactory().openSession();
         currentTransaction = currentSession.beginTransaction();
-        return currentSession;
     }
 
     public void closeCurrentSession(){
@@ -48,17 +47,22 @@ public class UserAchievementDaoImpl implements UserAchievementDao {
 
     @Override
     public void insert(UserAchievement userAchievement) {
-
+        getCurrentSession().save(userAchievement);
     }
 
     @Override
     public void update(UserAchievement userAchievement) {
-
+        getCurrentSession().save(userAchievement);
     }
 
     @Override
     public void delete(long id) {
+        getCurrentSession().delete(findById(id));
+    }
 
+    @Override
+    public UserAchievement findById(long id) {
+        return getCurrentSession().get(UserAchievement.class,id);
     }
 
     @Override
