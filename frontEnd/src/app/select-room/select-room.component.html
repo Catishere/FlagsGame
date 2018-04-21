@@ -1,0 +1,5 @@
+<ul *ngIf="show">
+  <li *ngFor="let room of rooms">
+    <b> {{room.id}} </b> <i> {{room.name}} </i> {{room.users}}/8 <button (click)="joinRoom(room.id)"> Join </button>
+  </li>
+</ul>

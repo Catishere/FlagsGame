@@ -1,0 +1,5 @@
+<ul *ngIf="show">
+  <li *ngFor="let user of users">
+    <b> {{ user.username }} </b> <i *ngIf="user.admin"> admin </i>
+  </li>
+</ul>
