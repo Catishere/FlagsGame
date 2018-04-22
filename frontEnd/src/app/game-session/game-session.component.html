@@ -1,0 +1,9 @@
+<div *ngIf="show">
+  <button (click)="nextQuestion()"> next question </button>
+  <div>{{currentQuestion.answer}}</div>
+  <img [src]="getPathOf(currentQuestion.flag1 | lowercase)" width="100px">
+  <img [src]="getPathOf(currentQuestion.flag2 | lowercase)" width="100px">
+  <img [src]="getPathOf(currentQuestion.flag3 | lowercase)" width="100px">
+  <img [src]="getPathOf(currentQuestion.flag4 | lowercase)" width="100px">
+  <img [src]="getPathOf(currentQuestion.flag5 | lowercase)" width="100px">
+</div>
