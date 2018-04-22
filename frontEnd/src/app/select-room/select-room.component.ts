@@ -8,7 +8,7 @@ import { ROOMS } from '../mock-rooms';
 })
 export class SelectRoomComponent implements OnInit {
 
-  show : boolean = true;
+  show : boolean = false;
   rooms = ROOMS;
 
   constructor() { }

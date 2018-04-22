@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SelectRoomComponent } from './select-room/select-room.component';
 import { RoomLobbyComponent } from './room-lobby/room-lobby.component';
+import { ActiveWindowComponent } from './active-window/active-window.component';
+import { GameSessionComponent } from './game-session/game-session.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { RoomLobbyComponent } from './room-lobby/room-lobby.component';
     AppComponent,
     LoginFormComponent,
     SelectRoomComponent,
-    RoomLobbyComponent
+    RoomLobbyComponent,
+    ActiveWindowComponent,
+    GameSessionComponent
   ],
   imports: [
     BrowserModule,

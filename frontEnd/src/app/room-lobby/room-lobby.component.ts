@@ -8,7 +8,9 @@ import { USERS } from '../mock-users'
 })
 export class RoomLobbyComponent implements OnInit {
 
-  show: boolean = true;
+  show: boolean = false;
+  id : number;
+  name: string = "Gosho's room ";
   users = USERS;
 
   constructor() { }
