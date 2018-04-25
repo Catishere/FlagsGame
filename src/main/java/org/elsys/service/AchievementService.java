@@ -10,8 +10,8 @@ import java.util.List;
 
 public class AchievementService {
 
-    private static AchievementDaoImpl achievementDao;
-    private static UserAchievementDaoImpl userAchievementDao;
+    private AchievementDaoImpl achievementDao;
+    private UserAchievementDaoImpl userAchievementDao;
 
     public AchievementService() {
         achievementDao = new AchievementDaoImpl();
