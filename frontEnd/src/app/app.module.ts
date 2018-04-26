@@ -8,8 +8,6 @@ import { SelectRoomComponent } from './select-room/select-room.component';
 import { RoomLobbyComponent } from './room-lobby/room-lobby.component';
 import { ActiveWindowComponent } from './active-window/active-window.component';
 import { GameSessionComponent } from './game-session/game-session.component';
-<<<<<<< HEAD
-import { EndGameComponent } from './end-game/end-game.component';
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -42,7 +40,6 @@ export function getAuthServiceConfigs() {
     RoomLobbyComponent,
     ActiveWindowComponent,
     GameSessionComponent,
-    EndGameComponent
     SignInComponent
   ],
   imports: [
