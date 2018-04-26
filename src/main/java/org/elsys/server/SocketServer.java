@@ -5,6 +5,7 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
 import java.net.InetSocketAddress;
+import java.util.Collection;
 
 public class SocketServer extends WebSocketServer {
 
@@ -40,5 +41,14 @@ public class SocketServer extends WebSocketServer {
     @Override
     public void onStart() {
 
+    }
+
+    public void sendToAll( String text ) {
+        Collection<WebSocket> con = connections();
+        synchronized ( con ) {
+            for( WebSocket c : con ) {
+                c.send( text );
+            }
+        }
     }
 }

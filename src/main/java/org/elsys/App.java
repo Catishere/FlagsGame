@@ -1,14 +1,34 @@
 package org.elsys;
 
-import org.elsys.entity.Achievement;
-import org.elsys.service.AchievementService;
+import org.elsys.server.SocketServer;
+import org.java_websocket.WebSocketImpl;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class App {
-    public static void main( String[] args )
-    {
-        System.out.println("Maven + Hibernate + MySQL");
-        AchievementService achievementService = new AchievementService();
-        Achievement achievement = new Achievement("Win 10 games", "Win 10 Games");
-        achievementService.addAchievement(achievement);
+    public static void main( String[] args ) throws IOException, InterruptedException {
+        WebSocketImpl.DEBUG = true;
+        int port = 8080;
+        try {
+            port = Integer.parseInt( args[ 0 ] );
+        } catch ( Exception ex ) {
+        }
+
+        SocketServer server = new SocketServer( port );
+
+        server.start();
+        System.out.println("Socket Server started on port: " + server.getPort());
+
+//        BufferedReader sysin = new BufferedReader(new InputStreamReader(System.in));
+//        while (true) {
+//            String in = sysin.readLine();
+//            server.sendToAll(in);
+//            if (in.equals("exit")) {
+//                server.stop();
+//                break;
+//            }
+//        }
     }
 }
