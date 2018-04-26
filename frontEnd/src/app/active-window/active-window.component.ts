@@ -4,6 +4,7 @@ import {RoomLobbyComponent} from '../room-lobby/room-lobby.component';
 import {SelectRoomComponent} from '../select-room/select-room.component';
 import {Room} from '../room';
 import {GameSessionComponent} from '../game-session/game-session.component';
+import {EndGameComponent} from '../end-game/end-game.component';
 
 @Component({
   selector: 'app-active-window',
@@ -16,6 +17,7 @@ export class ActiveWindowComponent implements OnInit {
   @ViewChild(SelectRoomComponent) selectRoom: SelectRoomComponent;
   @ViewChild(RoomLobbyComponent) lobby: RoomLobbyComponent;
   @ViewChild(GameSessionComponent) gameSession: GameSessionComponent;
+  @ViewChild(EndGameComponent) endGame: EndGameComponent;
 
   constructor() {
   }
@@ -39,7 +41,7 @@ export class ActiveWindowComponent implements OnInit {
         this.gameSession.show = true;
         break;
       case 'endGame':
-        console.log('endGame');
+        this.endGame.show = true;
         break;
       default:
         this.login.show = true;
@@ -52,6 +54,7 @@ export class ActiveWindowComponent implements OnInit {
     this.selectRoom.show = false;
     this.lobby.show = false;
     this.gameSession.show = false;
+    this.endGame.show = false;
   }
 
 }

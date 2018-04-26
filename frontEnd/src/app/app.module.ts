@@ -8,6 +8,7 @@ import { SelectRoomComponent } from './select-room/select-room.component';
 import { RoomLobbyComponent } from './room-lobby/room-lobby.component';
 import { ActiveWindowComponent } from './active-window/active-window.component';
 import { GameSessionComponent } from './game-session/game-session.component';
+import { EndGameComponent } from './end-game/end-game.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { GameSessionComponent } from './game-session/game-session.component';
     SelectRoomComponent,
     RoomLobbyComponent,
     ActiveWindowComponent,
-    GameSessionComponent
+    GameSessionComponent,
+    EndGameComponent
   ],
   imports: [
     BrowserModule,

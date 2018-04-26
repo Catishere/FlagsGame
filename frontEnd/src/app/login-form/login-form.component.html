@@ -1,5 +1,21 @@
-<p *ngIf="show">
-  Username: <input [(ngModel)]="username">
-  Password: <input [(ngModel)]="password" type="password">
-  <button (click)="login()"> Login </button>
-</p>
+<div *ngIf="show">
+  <table>
+    <tr>
+      <td>Username</td>
+      <td><input [(ngModel)]="username"></td>
+    </tr>
+    <tr>
+      <td>
+        Password
+      </td>
+      <td>
+        <input [(ngModel)]="password" type="password">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)="login()"> Login</button>
+      </td>
+    </tr>
+  </table>
+</div>
