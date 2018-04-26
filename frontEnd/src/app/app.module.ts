@@ -13,19 +13,19 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider,
   FacebookLoginProvider,
-} from "angular5-social-login";
+} from 'angular5-social-login';
 import { SignInComponent } from './signin/signin.component';
 
 export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
+  const config = new AuthServiceConfig(
     [
       {
         id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider("599511380396307")
+        provider: new FacebookLoginProvider('599511380396307')
       },
       {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("924387460332-mkdjvc9be9u0oa28dhb6oobvddd5t9i8.apps.googleusercontent.com")
+        provider: new GoogleLoginProvider('924387460332-mkdjvc9be9u0oa28dhb6oobvddd5t9i8.apps.googleusercontent.com')
       }
     ]
   );
