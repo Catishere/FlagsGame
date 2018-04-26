@@ -6,6 +6,7 @@ import {Room} from '../room';
 import {GameSessionComponent} from '../game-session/game-session.component';
 import {EndGameComponent} from '../end-game/end-game.component';
 
+
 @Component({
   selector: 'app-active-window',
   templateUrl: './active-window.component.html',
@@ -19,8 +20,7 @@ export class ActiveWindowComponent implements OnInit {
   @ViewChild(GameSessionComponent) gameSession: GameSessionComponent;
   @ViewChild(EndGameComponent) endGame: EndGameComponent;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }

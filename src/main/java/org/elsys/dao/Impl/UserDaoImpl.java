@@ -1,10 +1,16 @@
 package org.elsys.dao.Impl;
 
 import org.elsys.dao.UserDao;
+import org.elsys.entity.RoomUser;
 import org.elsys.entity.User;
 import org.elsys.persistence.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class UserDaoImpl implements UserDao {
 
@@ -61,11 +67,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findById(long id) {
-        return null;
+        return getCurrentSession().get(User.class, id);
     }
 
     @Override
     public User findByUsername(String name) {
-        return null;
+        CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root).where(builder.equal(root.get("name"), name));
+        Query<User> q = getCurrentSession().createQuery(query);
+        return q.getSingleResult();
     }
 }
