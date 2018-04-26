@@ -15,6 +15,13 @@ import {
   FacebookLoginProvider,
 } from 'angular5-social-login';
 import { SignInComponent } from './signin/signin.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+
+import {MatExpansionModule} from '@angular/material/expansion';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -45,7 +52,7 @@ export function getAuthServiceConfigs() {
   imports: [
     BrowserModule,
     SocialLoginModule,
-    FormsModule
+    FormsModule, MatFormFieldModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatInputModule, MatListModule, MatExpansionModule
   ],
   providers: [
     {

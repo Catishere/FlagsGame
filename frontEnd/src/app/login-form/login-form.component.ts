@@ -9,9 +9,9 @@ import { SocketService } from '../service/socket.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  show: boolean = true;
-  username : string = '';
-  password : string = '';
+  show = true;
+  username = '';
+  password = '';
 
   constructor(private socketService: SocketService) { }
 
@@ -19,9 +19,9 @@ export class LoginFormComponent implements OnInit {
   }
 
   login():void {
-    console.log("Send to socket: " + this.username + ' ' + this.password);
-    //this.socketService.initSocket(); // Wruzwa se sus surwara
-    this.socketService.send("samo cska");
+    console.log('Send to socket: ' + this.username + ' ' + this.password);
+    // this.socketService.initSocket(); // Wruzwa se sus surwara
+    this.socketService.send('samo cska');
     this.show = false;
   }
 
