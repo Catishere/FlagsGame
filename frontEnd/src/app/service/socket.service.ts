@@ -17,7 +17,7 @@ export class SocketService {
 
     this.socket.onmessage = function (message) {
       console.log(message.data);
-    }
+    };
 
     // Log errors
     this.socket.onerror = function (error) {
