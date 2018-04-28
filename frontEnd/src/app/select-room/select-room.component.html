@@ -10,8 +10,15 @@
     </mat-expansion-panel-header>
 
     <div style="float: left;">Players: {{room.users}}</div>
-    <div style="float: right;"><button mat-raised-button color="warn" (click)="joinRoom(room.id)"> Join</button></div>
+    <div style="float: right;">
+      <button mat-raised-button color="warn" (click)="joinRoom(room.id)"> Join</button>
+    </div>
     <div style="clear: both;"></div>
 
   </mat-expansion-panel>
+  <div style="text-align: right;">
+    <br>
+    or
+    <button mat-raised-button color="primary" (click)="joinRoom(room.id)"> Create room</button>
+  </div>
 </div>
