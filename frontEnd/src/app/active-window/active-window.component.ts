@@ -4,6 +4,7 @@ import {RoomLobbyComponent} from '../room-lobby/room-lobby.component';
 import {SelectRoomComponent} from '../select-room/select-room.component';
 import {Room} from '../room';
 import {GameSessionComponent} from '../game-session/game-session.component';
+import {SocketService} from "../service/socket.service";
 
 
 @Component({
@@ -18,9 +19,10 @@ export class ActiveWindowComponent implements OnInit {
   @ViewChild(RoomLobbyComponent) lobby: RoomLobbyComponent;
   @ViewChild(GameSessionComponent) gameSession: GameSessionComponent;
 
-  constructor() { }
+  constructor(private socketService: SocketService) { }
 
   ngOnInit() {
+    this.socketService.initSocket();
   }
 
   onReceiveMessage(msg: string) {

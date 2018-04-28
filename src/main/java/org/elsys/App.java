@@ -14,6 +14,7 @@ public class App {
         try {
             port = Integer.parseInt( args[ 0 ] );
         } catch ( Exception ex ) {
+            System.out.println("asd");
         }
 
         SocketServer server = new SocketServer( port );
@@ -21,14 +22,14 @@ public class App {
         server.start();
         System.out.println("Socket Server started on port: " + server.getPort());
 
-//        BufferedReader sysin = new BufferedReader(new InputStreamReader(System.in));
-//        while (true) {
-//            String in = sysin.readLine();
-//            server.sendToAll(in);
-//            if (in.equals("exit")) {
-//                server.stop();
-//                break;
-//            }
-//        }
+        BufferedReader sysin = new BufferedReader(new InputStreamReader(System.in));
+        while (true) {
+            String in = sysin.readLine();
+            server.sendToAll(in);
+            if (in.equals("exit")) {
+                server.stop();
+                break;
+            }
+        }
     }
 }

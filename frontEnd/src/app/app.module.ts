@@ -23,9 +23,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import {SocketService} from "./service/socket.service";
 
 export function getAuthServiceConfigs() {
-  const config = new AuthServiceConfig(
+  return new AuthServiceConfig(
     [
       {
         id: FacebookLoginProvider.PROVIDER_ID,
@@ -37,7 +38,6 @@ export function getAuthServiceConfigs() {
       }
     ]
   );
-  return config;
 }
 
 @NgModule({
@@ -59,7 +59,8 @@ export function getAuthServiceConfigs() {
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },
+    SocketService
   ],
   bootstrap: [AppComponent]
 })
