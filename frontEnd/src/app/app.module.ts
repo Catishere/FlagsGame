@@ -13,19 +13,27 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider,
   FacebookLoginProvider,
-} from "angular5-social-login";
+} from 'angular5-social-login';
 import { SignInComponent } from './signin/signin.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
 
 export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
+  const config = new AuthServiceConfig(
     [
       {
         id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider("599511380396307")
+        provider: new FacebookLoginProvider('599511380396307')
       },
       {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("924387460332-mkdjvc9be9u0oa28dhb6oobvddd5t9i8.apps.googleusercontent.com")
+        provider: new GoogleLoginProvider('924387460332-mkdjvc9be9u0oa28dhb6oobvddd5t9i8.apps.googleusercontent.com')
       }
     ]
   );
@@ -45,7 +53,7 @@ export function getAuthServiceConfigs() {
   imports: [
     BrowserModule,
     SocialLoginModule,
-    FormsModule
+    FormsModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
   ],
   providers: [
     {

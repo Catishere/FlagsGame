@@ -1,0 +1,17 @@
+table {
+  width: 300px;
+  margin: 0 auto;
+}
+
+td.label {
+  font-size: 10pt;
+  width: 20%;
+}
+
+.example-full-width {
+  width: 500px;
+}
+
+.right-align {
+  text-align: right;
+}

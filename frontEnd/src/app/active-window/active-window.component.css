@@ -1,0 +1,12 @@
+#container {
+  background: #fff;
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 3px;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
