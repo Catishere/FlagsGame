@@ -20,8 +20,9 @@ import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
-
+import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -52,7 +53,7 @@ export function getAuthServiceConfigs() {
   imports: [
     BrowserModule,
     SocialLoginModule,
-    FormsModule, MatFormFieldModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatInputModule, MatListModule, MatExpansionModule
+    FormsModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
   ],
   providers: [
     {

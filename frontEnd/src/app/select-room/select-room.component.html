@@ -1,5 +1,5 @@
 <div *ngIf="show">
-  <mat-expansion-panel *ngFor="let room of rooms">
+  <mat-expansion-panel *ngFor="let room of rooms" class="example-headers-align">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{room.name}}
@@ -9,11 +9,9 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    Players: {{room.users}}
-    <span style="text-align: right"> If you want to join please press the button
-      <button mat-button (click)="joinRoom(room.id)"> Join</button>
-    </span>
-
+    <div style="float: left;">Players: {{room.users}}</div>
+    <div style="float: right;"><button mat-raised-button color="warn" (click)="joinRoom(room.id)"> Join</button></div>
+    <div style="clear: both;"></div>
 
   </mat-expansion-panel>
 </div>

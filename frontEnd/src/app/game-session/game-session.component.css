@@ -1,0 +1,20 @@
+#questions-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#questions-box img {
+  height: 50px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+h3 {
+  color: rebeccapurple;
+  text-align: center;
+}
+
+button.next {
+  margin: 10px auto;
+}

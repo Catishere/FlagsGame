@@ -1,11 +1,28 @@
-<p *ngIf="show">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Username" [(ngModel)]="username">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput type="password" placeholder="Password" [(ngModel)]="password">
-  </mat-form-field>
-  <button mat-button (click)="login()">Login</button>
-  <app-signin></app-signin>
-</p>
+<table *ngIf="show">
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Username" [(ngModel)]="username">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td class="right-align">
+      press <button mat-raised-button (click)="login()">Login</button>
+    </td>
+  </tr>
+  <tr>
+    <td class="right-align">
+      or use
+      <app-signin></app-signin>
+    </td>
+  </tr>
+</table>
 
