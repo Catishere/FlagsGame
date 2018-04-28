@@ -1,34 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { Message } from '../model/message';
-import { Event } from '../model/event';
-
-import * as socketIo from 'socket.io-client';
-
-const SERVER_URL = 'localhost:8080';
 
 @Injectable()
 export class SocketService {
   private socket;
 
   public initSocket(): void {
-    this.socket = socketIo(SERVER_URL);
+    this.socket = new WebSocket('ws://localhost:8080');
+
+    this.socket.onopen = function () {
+      console.log("open"); // Send the message 'Ping' to the server
+    };
+
+    this.socket.onclose = function () {
+      console.log("close");
+    };
+
+    this.socket.onmessage = function (message) {
+      console.log(message.data);
+    }
+
+    // Log errors
+    this.socket.onerror = function (error) {
+      console.log('WebSocket Error ' + error);
+    };
+
   }
 
-  public send(message: Message): void {
-    this.socket.emit('message', message);
-  }
-
-  public onMessage(): Observable<Message> {
-    return new Observable<Message>(observer => {
-      this.socket.on('message', (data: Message) => observer.next(data));
-    });
-  }
-
-  public onEvent(event: Event): Observable<any> {
-    return new Observable<Event>(observer => {
-      this.socket.on(event, () => observer.next());
-    });
+  public send(message): void {
+    this.socket.send(JSON.stringify(message));
   }
 }

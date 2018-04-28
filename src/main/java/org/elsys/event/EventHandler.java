@@ -1,18 +1,18 @@
 package org.elsys.event;
 
+import com.google.gson.JsonObject;
 import org.elsys.dao.RoomUserDao;
 import org.elsys.entity.User;
 import org.elsys.helper.UserSockets;
 import org.elsys.service.RoomService;
 import org.elsys.service.UserService;
 import org.java_websocket.WebSocket;
-import org.json.JSONObject;
 
 public class EventHandler {
     private UserService userSvc = new UserService();
     private RoomService roomService = new RoomService();
 
-    public JSONObject executeEvent(WebSocket conn, JSONObject jsonObject) {
+    public JsonObject executeEvent(WebSocket conn, JsonObject jsonObject) {
 
         String event = jsonObject.get("event").toString();
 
@@ -35,44 +35,45 @@ public class EventHandler {
         }
     }
 
-    private JSONObject startGameEvent(WebSocket conn, JSONObject jsonObject) {
+    private JsonObject startGameEvent(WebSocket conn, JsonObject jsonObject) {
         return null;
     }
 
-    private JSONObject forfeitEvent(WebSocket conn, JSONObject jsonObject) {
+    private JsonObject forfeitEvent(WebSocket conn, JsonObject jsonObject) {
         return null;
     }
 
-    private JSONObject answerEvent(WebSocket conn, JSONObject jsonObject) {
+    private JsonObject answerEvent(WebSocket conn, JsonObject jsonObject) {
         return null;
     }
 
-    private JSONObject searchMatchEvent(WebSocket conn, JSONObject jsonObject) {
+    private JsonObject searchMatchEvent(WebSocket conn, JsonObject jsonObject) {
         return null;
     }
 
-    private JSONObject logoutEvent(WebSocket conn, JSONObject jsonObject) {
+    private JsonObject logoutEvent(WebSocket conn, JsonObject jsonObject) {
         return null;
     }
 
-    private JSONObject loginEvent(WebSocket conn, JSONObject jsonObject) {
+    private JsonObject loginEvent(WebSocket conn, JsonObject jsonObject) {
 
-        String name = (String) jsonObject.get("user");
-        String pass = (String) jsonObject.get("pass");
+        String name = jsonObject.get("name").getAsString();
+        String pass = jsonObject.get("pass").getAsString();
         User user = userSvc.getUserByName(name);
 
         if (user != null) {
             if (user.getPassword().equals(pass)) {
-                jsonObject.put("success", true);
+                jsonObject.addProperty("success", true);
                 UserSockets.getInstance().add(user.getId(), conn);
-                jsonObject.put("userId", user.getId());
+                jsonObject.addProperty("userId", user.getId());
             } else {
-                jsonObject.put("success", false);
+                jsonObject.addProperty("success", false);
             }
         } else {
-            jsonObject.put("success", false);
+            jsonObject.addProperty("success", false);
         }
         jsonObject.remove("pass");
-        return new JSONObject().put("login", jsonObject);
+        jsonObject.addProperty("event", "login");
+        return jsonObject;
     }
 }

@@ -11,10 +11,12 @@ public class App {
     public static void main( String[] args ) throws IOException, InterruptedException {
         WebSocketImpl.DEBUG = true;
         int port = 8080;
-        try {
-            port = Integer.parseInt( args[ 0 ] );
-        } catch ( Exception ex ) {
-            System.out.println("asd");
+        if (args.length != 0) {
+            try {
+                port = Integer.parseInt(args[0]);
+            } catch (Exception ex) {
+                System.out.println("Riperoni");
+            }
         }
 
         SocketServer server = new SocketServer( port );
@@ -29,6 +31,9 @@ public class App {
             if (in.equals("exit")) {
                 server.stop();
                 break;
+            }
+            if (in.equals("count")) {
+                System.out.println(server.getSocketCount());
             }
         }
     }

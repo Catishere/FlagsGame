@@ -19,7 +19,11 @@ export class LoginFormComponent implements OnInit {
 
   login():void {
     console.log("Send to socket: " + this.username + ' ' + this.password);
-    this.socketService.send("samo cska");
+    var msg = {
+      type: "message",
+      text: "samo cska"
+    };
+    this.socketService.send(msg);
     this.show = false;
   }
 

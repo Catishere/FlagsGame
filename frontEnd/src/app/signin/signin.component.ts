@@ -4,6 +4,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular5-social-login';
+import {SocketService} from "../service/socket.service";
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +13,8 @@ import {
 })
 export class SignInComponent implements OnInit {
 
-  constructor( private socialAuthService: AuthService ) {}
+  constructor( private socialAuthService: AuthService,
+               private socketService: SocketService) {}
 
   ngOnInit() {
   }
@@ -28,8 +30,7 @@ export class SignInComponent implements OnInit {
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
-        // Send Data for login {event : login, name : name, password : password}
-        //TODO
+        this.socketService.send(userData);
       }
     );
   }

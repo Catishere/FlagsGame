@@ -1,10 +1,14 @@
 package org.elsys.server;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 import java.util.Collection;
 
 public class SocketServer extends WebSocketServer {
@@ -25,12 +29,21 @@ public class SocketServer extends WebSocketServer {
 
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-
     }
 
     @Override
     public void onMessage(WebSocket conn, String message) {
+        System.out.println("Message: " + message);
+        Gson g = new Gson();
+        JsonObject jsonObject = new JsonParser().parse(message).getAsJsonObject();
+        String result = jsonObject.get("name").getAsString();
+        System.out.println(result);
+        conn.send(result);
+    }
 
+    @Override
+    public void onMessage(WebSocket conn, ByteBuffer message ) {
+        System.out.println(message);
     }
 
     @Override
@@ -43,12 +56,16 @@ public class SocketServer extends WebSocketServer {
 
     }
 
-    public void sendToAll( String text ) {
+    public void sendToAll(String text ) {
         Collection<WebSocket> con = connections();
         synchronized ( con ) {
             for( WebSocket c : con ) {
                 c.send( text );
             }
         }
+    }
+
+    public int getSocketCount() {
+        return connections().size();
     }
 }
