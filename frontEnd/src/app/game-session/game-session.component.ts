@@ -15,11 +15,12 @@ export class GameSessionComponent implements OnInit {
   questId = 0;
   questions = QUESTIONS;
   currentQuestion: Question = this.questions[0];
-  userAnswer: number;
+  userAnswer: string;
   timer = 0;
   intervalId: number;
+  points = 0;
 
-  constructor(public snackBar : MatSnackBar) {
+  constructor(public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -29,9 +30,17 @@ export class GameSessionComponent implements OnInit {
   }
 
   nextQuestion() {
-    this.snackBar.open('You answered correctly. Maybe', 'Cool', {
-      duration: 3500;
-    });
+    console.log(this.userAnswer);
+    if (this.userAnswer === this.currentQuestion.answers[this.currentQuestion.correct]) {
+      this.snackBar.open('You answered correctly.', 'Cool', {
+        duration: 3500;
+      });
+      this.points += 20 - this.timer;
+    } else {
+      this.snackBar.open('You answered wrong.', 'Fak', {
+        duration: 3500;
+      });
+    }
     if (this.questions.length - 1 > this.questId) {
       this.questId++;
     }
@@ -60,11 +69,11 @@ export class GameSessionComponent implements OnInit {
   }
 
   timeIt() {
-    if(!this.show) return;
+    if (!this.show) return;
     this.timer += 10;
     if (this.timer === 110) {
       this.nextQuestion();
     }
   }
 
-  }
+}
