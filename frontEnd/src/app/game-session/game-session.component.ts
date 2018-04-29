@@ -14,6 +14,9 @@ export class GameSessionComponent implements OnInit {
   questId = 0;
   questions = QUESTIONS;
   currentQuestion: Question = this.questions[0];
+  userAnswer: number;
+  timer = 0;
+  intervalId: number;
 
   constructor() {
   }
@@ -21,6 +24,7 @@ export class GameSessionComponent implements OnInit {
   ngOnInit() {
     this.currentQuestion = this.questions[0];
     console.log(this.currentQuestion);
+    this.start();
   }
 
   nextQuestion() {
@@ -28,11 +32,34 @@ export class GameSessionComponent implements OnInit {
       this.questId++;
     }
     this.currentQuestion = this.questions[this.questId];
+    this.timer = 0;
     console.log(this.questId);
   }
 
-  getPathOf(flag: string): string {
-    return 'assets/flags/' + flag + '.png';
+  start() {
+    this.intervalId = setInterval(() => {
+      this.timeIt();
+    }, 1000);
   }
 
-}
+  stop() {
+    clearInterval(this.intervalId);
+    this.intervalId = -1;
+  }
+
+  startStop() {
+    if (this.intervalId === -1) {
+      this.start();
+    } else {
+      this.stop();
+    }
+  }
+
+  timeIt() {
+    this.timer += 10;
+    if (this.timer === 110) {
+      this.nextQuestion();
+    }
+  }
+
+  }

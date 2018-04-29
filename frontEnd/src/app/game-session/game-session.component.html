@@ -1,14 +1,20 @@
 <div *ngIf="show">
 
-  <h3>{{currentQuestion.answer}}</h3>
+  <h2> {{currentQuestion.question}} </h2>
+  <mat-progress-bar mode="determinate" [value]="timer"></mat-progress-bar>
+  <br>
 
-  <div id="questions-box">
-    <img [src]="getPathOf(currentQuestion.flag1 | lowercase)" >
-    <img [src]="getPathOf(currentQuestion.flag2 | lowercase)" >
-    <img [src]="getPathOf(currentQuestion.flag3 | lowercase)" >
-    <img [src]="getPathOf(currentQuestion.flag4 | lowercase)" >
-    <img [src]="getPathOf(currentQuestion.flag5 | lowercase)" >
+  <mat-radio-group class="example-radio-group" [(ngModel)]="userAnswer">
+    <mat-radio-button color="primary" class="example-radio-button" *ngFor="let answer of currentQuestion.answers" [value]="answer[0]">
+      {{answer}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div class="bottom">
+    <div>Question: <b>{{questId + 1}}/{{questions.length}}</b></div>
+    <div>Points: <b>222</b></div>
+    <div>
+      <button mat-raised-button (click)="nextQuestion()"> Pass</button>
+      <button mat-raised-button color="warn" class="next" (click)="nextQuestion()"> Submit</button>
+    </div>
   </div>
-
-  <button mat-raised-button class="next" (click)="nextQuestion()"> next question</button>
 </div>

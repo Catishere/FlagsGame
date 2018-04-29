@@ -1,6 +1,8 @@
 <h1>
-  Sign in
+  Sign in via social media
 </h1>
+<div class="centered">
+  <button mat-raised-button color="primary" (click)="socialSignIn('facebook')">Facebook</button>
+  <button mat-raised-button color="warn" (click)="socialSignIn('google')">Google</button>
 
-<button mat-raised-button color="primary" (click)="socialSignIn('facebook')">Facebook</button>
-<button mat-raised-button color="warn" (click)="socialSignIn('google')">Google</button>
+</div>

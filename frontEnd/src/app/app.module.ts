@@ -24,6 +24,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {SocketService} from "./service/socket.service";
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 export function getAuthServiceConfigs() {
   return new AuthServiceConfig(
@@ -53,7 +56,7 @@ export function getAuthServiceConfigs() {
   imports: [
     BrowserModule,
     SocialLoginModule,
-    FormsModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
+    FormsModule, MatFormFieldModule, MatRadioModule, MatIconModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
   ],
   providers: [
     {
