@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SelectRoomComponent } from './select-room/select-room.component';
-import { RoomLobbyComponent } from './room-lobby/room-lobby.component';
 import { ActiveWindowComponent } from './active-window/active-window.component';
 import { GameSessionComponent } from './game-session/game-session.component';
 import {
@@ -28,6 +27,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
 
 export function getAuthServiceConfigs() {
   return new AuthServiceConfig(
@@ -49,7 +49,6 @@ export function getAuthServiceConfigs() {
     AppComponent,
     LoginFormComponent,
     SelectRoomComponent,
-    RoomLobbyComponent,
     ActiveWindowComponent,
     GameSessionComponent,
     SignInComponent,
@@ -58,7 +57,7 @@ export function getAuthServiceConfigs() {
   imports: [
     BrowserModule,
     SocialLoginModule,
-    FormsModule, MatFormFieldModule, MatRadioModule, MatSnackBarModule, MatIconModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
+    FormsModule, MatFormFieldModule, MatRadioModule, MatTableModule, MatSnackBarModule, MatIconModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
   ],
   providers: [
     {

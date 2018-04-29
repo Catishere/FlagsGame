@@ -1,11 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {LoginFormComponent} from '../login-form/login-form.component';
-import {RoomLobbyComponent} from '../room-lobby/room-lobby.component';
 import {SelectRoomComponent} from '../select-room/select-room.component';
 import {Room} from '../room';
 import {GameSessionComponent} from '../game-session/game-session.component';
 import {SocketService} from "../service/socket.service";
-
+import {LeaderboardComponent} from '../leaderboard/leaderboard.component';
 
 @Component({
   selector: 'app-active-window',
@@ -16,8 +15,8 @@ export class ActiveWindowComponent implements OnInit {
 
   @ViewChild(LoginFormComponent) login: LoginFormComponent;
   @ViewChild(SelectRoomComponent) selectRoom: SelectRoomComponent;
-  @ViewChild(RoomLobbyComponent) lobby: RoomLobbyComponent;
   @ViewChild(GameSessionComponent) gameSession: GameSessionComponent;
+  @ViewChild(LeaderboardComponent) leaderboard: LeaderboardComponent;
 
   constructor(private socketService: SocketService) { }
 
@@ -34,14 +33,14 @@ export class ActiveWindowComponent implements OnInit {
       case 'selectRoom' :
         this.selectRoom.show = true;
         break;
-      case 'lobby' :
-        this.lobby.show = true;
-        break;
       case 'gameSession':
         this.gameSession.show = true;
         break;
       case 'endGame':
         console.log('endGame');
+        break;
+      case 'leaderboard':
+        this.leaderboard.show = true;
         break;
       default:
         this.login.show = true;
@@ -52,8 +51,8 @@ export class ActiveWindowComponent implements OnInit {
   disableAll() {
     this.login.show = false;
     this.selectRoom.show = false;
-    this.lobby.show = false;
     this.gameSession.show = false;
+    this.leaderboard.show = false;
   }
 
 }

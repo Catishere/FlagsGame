@@ -2,11 +2,11 @@
   <nav>
     <button mat-button (click)="onReceiveMessage('login')"> login</button>
     <button mat-button (click)="onReceiveMessage('selectRoom')"> select room</button>
-    <button mat-button (click)="onReceiveMessage('lobby')"> lobby</button>
     <button mat-button (click)="onReceiveMessage('gameSession')"> gameSession</button>
+    <button mat-button (click)="onReceiveMessage('leaderboard')"> leaderboards</button>
   </nav>
   <app-login-form></app-login-form>
   <app-select-room></app-select-room>
-  <app-room-lobby></app-room-lobby>
   <app-game-session></app-game-session>
+  <app-leaderboard></app-leaderboard>
 </div>
