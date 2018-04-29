@@ -2,6 +2,7 @@ import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {QUESTIONS} from '../mock-questions';
 import {Question} from '../question';
 import {ActiveWindowComponent} from '../active-window/active-window.component';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-game-session',
@@ -18,7 +19,7 @@ export class GameSessionComponent implements OnInit {
   timer = 0;
   intervalId: number;
 
-  constructor() {
+  constructor(public snackBar : MatSnackBar) {
   }
 
   ngOnInit() {
@@ -28,6 +29,9 @@ export class GameSessionComponent implements OnInit {
   }
 
   nextQuestion() {
+    this.snackBar.open('You answered correctly. Maybe', 'Cool', {
+      duration: 3500;
+    });
     if (this.questions.length - 1 > this.questId) {
       this.questId++;
     }
@@ -56,6 +60,7 @@ export class GameSessionComponent implements OnInit {
   }
 
   timeIt() {
+    if(!this.show) return;
     this.timer += 10;
     if (this.timer === 110) {
       this.nextQuestion();

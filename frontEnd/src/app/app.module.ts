@@ -26,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {SocketService} from "./service/socket.service";
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 export function getAuthServiceConfigs() {
   return new AuthServiceConfig(
@@ -51,12 +52,13 @@ export function getAuthServiceConfigs() {
     RoomLobbyComponent,
     ActiveWindowComponent,
     GameSessionComponent,
-    SignInComponent
+    SignInComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
     SocialLoginModule,
-    FormsModule, MatFormFieldModule, MatRadioModule, MatIconModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
+    FormsModule, MatFormFieldModule, MatRadioModule, MatSnackBarModule, MatIconModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, NoopAnimationsModule, MatChipsModule, MatInputModule, MatListModule, MatExpansionModule
   ],
   providers: [
     {
