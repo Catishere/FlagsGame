@@ -1,7 +1,6 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {QUESTIONS} from '../mock-questions';
 import {Question} from '../question';
-import {ActiveWindowComponent} from '../active-window/active-window.component';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -29,20 +28,34 @@ export class GameSessionComponent implements OnInit {
     this.start();
   }
 
-  nextQuestion() {
-    console.log(this.userAnswer);
+  passQuestion() {
+    this.points += 10;
+    this.snackBar.open('You passed the question. 10 points earned.', 'Meh', {
+      duration: 3500;
+  });
+    this.nextQuestion();
+  }
+
+  answeredQuestion() {
     if (this.userAnswer === this.currentQuestion.answers[this.currentQuestion.correct]) {
-      this.snackBar.open('You answered correctly.', 'Cool', {
+      const roundPoints = 250 - this.timer;
+      this.points += roundPoints;
+      this.snackBar.open('You answered correctly. ' + roundPoints + ' points earned.', 'Cool', {
         duration: 3500;
-      });
-      this.points += 20 - this.timer;
+       });
     } else {
-      this.snackBar.open('You answered wrong.', 'Fak', {
+      this.snackBar.open('You answered wrong. 0 points earned.', 'Fak', {
         duration: 3500;
-      });
-    }
+    });
+    }this.nextQuestion();
+  }
+
+  nextQuestion() {
     if (this.questions.length - 1 > this.questId) {
       this.questId++;
+    } else {
+      console.log('EndGame send event.');
+      return;
     }
     this.currentQuestion = this.questions[this.questId];
     this.timer = 0;
@@ -69,7 +82,7 @@ export class GameSessionComponent implements OnInit {
   }
 
   timeIt() {
-    if (!this.show) return;
+    if (!this.show) { return; }
     this.timer += 10;
     if (this.timer === 110) {
       this.nextQuestion();
