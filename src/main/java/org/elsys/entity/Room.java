@@ -8,7 +8,7 @@ public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roomId")
+    @Column(name = "room_id")
     private long id;
 
     @Column(name = "name")

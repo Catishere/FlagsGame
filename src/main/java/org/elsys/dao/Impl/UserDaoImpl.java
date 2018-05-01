@@ -4,13 +4,16 @@ import org.elsys.dao.UserDao;
 import org.elsys.entity.RoomUser;
 import org.elsys.entity.User;
 import org.elsys.persistence.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 
@@ -51,12 +54,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void insert(UserDao user) {
+    public void insert(User user) {
         getCurrentSession().save(user);
     }
 
     @Override
-    public void update(UserDao user) {
+    public void update(User user) {
         getCurrentSession().save(user);
     }
 
@@ -73,10 +76,20 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findByUsername(String name) {
         CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<User> query = builder.createQuery(User.class);
-        Root<User> root = query.from(User.class);
-        query.select(root).where(builder.equal(root.get("name"), name));
-        Query<User> q = getCurrentSession().createQuery(query);
-        return q.getSingleResult();
+        CriteriaQuery<User> criteria = builder.createQuery(User.class);
+        Root<User> UserRoot = criteria.from(User.class);
+        Predicate predicate = builder.equal(UserRoot.get("name"), name);
+        criteria.select(UserRoot).where(predicate);
+        return getCurrentSession().createQuery(criteria).getSingleResult();
+    }
+
+    @Override
+    public User findByGoogleId(String googleId) {
+        CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<User> criteria = builder.createQuery(User.class);
+        Root<User> UserRoot = criteria.from(User.class);
+        Predicate predicate = builder.equal(UserRoot.get("google_id"), googleId);
+        criteria.select(UserRoot).where(predicate);
+        return getCurrentSession().createQuery(criteria).getSingleResult();
     }
 }

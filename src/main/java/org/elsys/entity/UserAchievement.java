@@ -7,11 +7,11 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "userAchievement")
+@Table(name = "user_achievement")
 public class UserAchievement {
 
     @Id
-    @Column(name = "userAchievement_id")
+    @Column(name = "user_achievement_id")
     private long id;
 
     @Column(name = "user_id")

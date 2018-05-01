@@ -21,7 +21,7 @@ public class HibernateUtil {
         configuration.setProperty("hibernate.connection.username", "root");
         configuration.setProperty("hibernate.connection.password", "root");
         configuration.setProperty("hibernate.connection.useSSL", "false");
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
         configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.connection.pool_size", "10");

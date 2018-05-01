@@ -1,9 +1,7 @@
 package org.elsys.dao.Impl;
 
-import org.elsys.dao.UserAchievementDao;
-import org.elsys.entity.RoomUser;
+import org.elsys.dao.ThemeDao;
 import org.elsys.entity.Theme;
-import org.elsys.entity.UserAchievement;
 import org.elsys.persistence.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,9 +10,8 @@ import org.hibernate.query.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
 
-public class UserAchievementDaoImpl implements UserAchievementDao {
+public class ThemeDaoImpl implements ThemeDao{
 
     private Session currentSession;
     private Transaction currentTransaction;
@@ -51,13 +48,13 @@ public class UserAchievementDaoImpl implements UserAchievementDao {
     }
 
     @Override
-    public void insert(UserAchievement userAchievement) {
-        getCurrentSession().save(userAchievement);
+    public void insert(Theme theme) {
+        getCurrentSession().save(theme);
     }
 
     @Override
-    public void update(UserAchievement userAchievement) {
-        getCurrentSession().save(userAchievement);
+    public void update(Theme theme) {
+        getCurrentSession().save(theme);
     }
 
     @Override
@@ -66,17 +63,17 @@ public class UserAchievementDaoImpl implements UserAchievementDao {
     }
 
     @Override
-    public UserAchievement findById(long id) {
-        return getCurrentSession().get(UserAchievement.class,id);
+    public Theme findById(long id) {
+        return getCurrentSession().get(Theme.class, id);
     }
 
     @Override
-    public List<UserAchievement> findByUserId(long id) {
+    public Theme findByName(String name) {
         CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<UserAchievement> query = builder.createQuery(UserAchievement.class);
-        Root<UserAchievement> root = query.from(UserAchievement.class);
-        query.select(root).where(builder.equal(root.get("user_id"), id));
-        Query<UserAchievement> q = getCurrentSession().createQuery(query);
-        return q.getResultList();
+        CriteriaQuery<Theme> query = builder.createQuery(Theme.class);
+        Root<Theme> root = query.from(Theme.class);
+        query.select(root).where(builder.equal(root.get("theme_name"), name));
+        Query<Theme> q = getCurrentSession().createQuery(query);
+        return q.getSingleResult();
     }
 }

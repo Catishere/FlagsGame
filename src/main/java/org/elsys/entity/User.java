@@ -9,7 +9,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
+    @Column(name = "user_id")
+
     private long id;
 
     @Column(name = "name")
@@ -21,27 +22,27 @@ public class User {
     @Column(name = "created_on")
     private Date createdDate;
 
-    @Column(name = "total_games")
-    private int totalGames;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "total_score")
-    private int totalScore;
+    @Column(name = "picture")
+    private String picture;
 
-    @Column(name = "fb_id")
+    @Column(name = "fb_id", columnDefinition="TEXT")
     private String facebookId;
 
-    @Column(name = "google_id")
+    @Column(name = "google_id", columnDefinition="TEXT")
     private String googleId;
 
     public User() {
     }
 
-    public User(String username, String password, Date createdDate, int totalGames, int totalScore, String facebookId, String googleId) {
+    public User(String username, String password, String email, String picture, Date createdDate, String facebookId, String googleId) {
         this.username = username;
+        this.email = email;
+        this.picture = picture;
         this.password = password;
         this.createdDate = createdDate;
-        this.totalGames = totalGames;
-        this.totalScore = totalScore;
         this.facebookId = facebookId;
         this.googleId = googleId;
     }
@@ -78,20 +79,12 @@ public class User {
         this.createdDate = createdDate;
     }
 
-    public int getTotalGames() {
-        return totalGames;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTotalGames(int totalGames) {
-        this.totalGames = totalGames;
-    }
-
-    public int getTotalScore() {
-        return totalScore;
-    }
-
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFacebookId() {
@@ -108,5 +101,13 @@ public class User {
 
     public void setGoogleId(String googleId) {
         this.googleId = googleId;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

@@ -3,6 +3,7 @@ package org.elsys.server;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.elsys.event.EventHandler;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -12,6 +13,8 @@ import java.nio.ByteBuffer;
 import java.util.Collection;
 
 public class SocketServer extends WebSocketServer {
+
+    private EventHandler eventHandler = new EventHandler();
 
     public SocketServer(int port) {
         super(new InetSocketAddress(port));
@@ -34,11 +37,9 @@ public class SocketServer extends WebSocketServer {
     @Override
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Message: " + message);
-        Gson g = new Gson();
-        JsonObject jsonObject = new JsonParser().parse(message).getAsJsonObject();
-        String result = jsonObject.get("name").getAsString();
-        System.out.println(result);
-        conn.send(result);
+        String response = eventHandler.executeEvent(conn, message);
+        System.out.println("End Message: " + response);
+        conn.send(response);
     }
 
     @Override

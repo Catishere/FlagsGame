@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
-        this.socketService.send(userData);
+        this.socketService.send({type: "googleLogin", userData});
       }
     );
   }

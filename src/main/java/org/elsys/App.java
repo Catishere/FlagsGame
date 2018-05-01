@@ -1,6 +1,8 @@
 package org.elsys;
 
+import org.elsys.entity.Achievement;
 import org.elsys.server.SocketServer;
+import org.elsys.service.AchievementService;
 import org.java_websocket.WebSocketImpl;
 
 import java.io.BufferedReader;

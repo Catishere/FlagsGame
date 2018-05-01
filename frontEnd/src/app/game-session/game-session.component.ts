@@ -30,9 +30,7 @@ export class GameSessionComponent implements OnInit {
 
   passQuestion() {
     this.points += 10;
-    this.snackBar.open('You passed the question. 10 points earned.', 'Meh', {
-      duration: 3500;
-  });
+    this.snackBar.open('You passed the question. 10 points earned.', 'Meh', {duration: 3500});
     this.nextQuestion();
   }
 
@@ -40,13 +38,9 @@ export class GameSessionComponent implements OnInit {
     if (this.userAnswer === this.currentQuestion.answers[this.currentQuestion.correct]) {
       const roundPoints = 250 - this.timer;
       this.points += roundPoints;
-      this.snackBar.open('You answered correctly. ' + roundPoints + ' points earned.', 'Cool', {
-        duration: 3500;
-       });
+      this.snackBar.open('You answered correctly. ' + roundPoints + ' points earned.', 'Cool', {duration: 3500});
     } else {
-      this.snackBar.open('You answered wrong. 0 points earned.', 'Fak', {
-        duration: 3500;
-    });
+      this.snackBar.open('You answered wrong. 0 points earned.', 'Fak', {duration: 3500});
     }this.nextQuestion();
   }
 

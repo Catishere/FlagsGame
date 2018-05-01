@@ -3,12 +3,12 @@ package org.elsys.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roomUser")
+@Table(name = "room_user")
 public class RoomUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roomUser_id")
+    @Column(name = "room_user_id")
     private long id;
 
     @Column(name = "user_id")

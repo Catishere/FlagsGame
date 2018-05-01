@@ -3,10 +3,10 @@ package org.elsys.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sessionUser")
+@Table(name = "session_user")
 public class SessionUser {
     @Id
-    @Column(name = "sessionUser_id")
+    @Column(name = "session_user_id")
     private long id;
 
     @Column(name = "user_id")
