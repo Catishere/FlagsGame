@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class SocketService {
@@ -17,6 +17,9 @@ export class SocketService {
 
     this.socket.onmessage = function (message) {
       console.log(message.data);
+      if (message.data.type == "end") {
+        console.log("ez life");
+      }
     };
 
     // Log errors

@@ -12,6 +12,9 @@ public class Session {
     @Column(name = "player_count")
     private int playerCount;
 
+    @Column(name = "points")
+    private int points;
+
     public Session() {
     }
 
@@ -33,5 +36,13 @@ public class Session {
 
     public void setPlayerCount(int playerCount) {
         this.playerCount = playerCount;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

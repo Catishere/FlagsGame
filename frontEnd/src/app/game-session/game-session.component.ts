@@ -1,7 +1,8 @@
-import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QUESTIONS} from '../mock-questions';
 import {Question} from '../question';
 import {MatSnackBar} from '@angular/material';
+import {SocketService} from "../service/socket.service";
 
 @Component({
   selector: 'app-game-session',
@@ -19,7 +20,8 @@ export class GameSessionComponent implements OnInit {
   intervalId: number;
   points = 0;
 
-  constructor(public snackBar: MatSnackBar) {
+  constructor(public snackBar: MatSnackBar,
+              private socketService: SocketService) {
   }
 
   ngOnInit() {
@@ -48,7 +50,7 @@ export class GameSessionComponent implements OnInit {
     if (this.questions.length - 1 > this.questId) {
       this.questId++;
     } else {
-      console.log('EndGame send event.');
+      this.socketService.send({type:"endgame", score:this.points});
       return;
     }
     this.currentQuestion = this.questions[this.questId];

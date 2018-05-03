@@ -36,4 +36,11 @@ public class UserService {
         userDao.closeCurrentSession();
         return user;
     }
+
+    public User getUserById(long Id) {
+        userDao.openCurrentSession();
+        User user = userDao.findById(Id);
+        userDao.closeCurrentSession();
+        return user;
+    }
 }

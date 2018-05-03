@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {LoginFormComponent} from '../login-form/login-form.component';
 import {SelectRoomComponent} from '../select-room/select-room.component';
-import {Room} from '../room';
 import {GameSessionComponent} from '../game-session/game-session.component';
 import {SocketService} from "../service/socket.service";
 import {LeaderboardComponent} from '../leaderboard/leaderboard.component';
@@ -54,5 +53,6 @@ export class ActiveWindowComponent implements OnInit {
     this.gameSession.show = false;
     this.leaderboard.show = false;
   }
+
 
 }

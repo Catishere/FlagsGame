@@ -1,10 +1,8 @@
 package org.elsys.dao.Impl;
 
 import org.elsys.dao.UserDao;
-import org.elsys.entity.RoomUser;
 import org.elsys.entity.User;
 import org.elsys.persistence.HibernateUtil;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -75,21 +73,18 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findByUsername(String name) {
-        CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<User> criteria = builder.createQuery(User.class);
-        Root<User> UserRoot = criteria.from(User.class);
-        Predicate predicate = builder.equal(UserRoot.get("name"), name);
-        criteria.select(UserRoot).where(predicate);
-        return getCurrentSession().createQuery(criteria).getSingleResult();
+        Query query= getCurrentSession().
+                createQuery("from User where name=:name");
+        query.setParameter("name", name);
+
+        return (User) query.uniqueResult();
     }
 
     @Override
     public User findByGoogleId(String googleId) {
-        CriteriaBuilder builder = getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<User> criteria = builder.createQuery(User.class);
-        Root<User> UserRoot = criteria.from(User.class);
-        Predicate predicate = builder.equal(UserRoot.get("google_id"), googleId);
-        criteria.select(UserRoot).where(predicate);
-        return getCurrentSession().createQuery(criteria).getSingleResult();
+        Query query= getCurrentSession().
+                createQuery("from User where googleId=:tokenId");
+        query.setParameter("tokenId", googleId);
+        return (User) query.uniqueResult();
     }
 }
